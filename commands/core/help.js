@@ -19,7 +19,6 @@ const helpModalSubmit = async (interaction, identifier) => {
 
     let embedProps = {
         season: interaction.options.getString('season'),
-        subject: interaction.options.getString('subject'),
         language: interaction.options.getString('language'),
         project: interaction.options.getString('project'),
         attachment: interaction.options.getAttachment('image'),
@@ -69,7 +68,7 @@ const helpModalBuilder = (identifier) => {
 }
 
 function ticketEmbedBuilder(props) {
-    let {userID, season, subject, language, project, description, attachment } = props
+    let {userID, language, project, description, attachment } = props
 
     let defaultPic = "https://cdn.discordapp.com/attachments/997625130769469481/1091258869071740948/fppsmalllustrewall_textureproduct750x1000.jpg"
     let url = (attachment == null) ? defaultPic : attachment.url
@@ -83,7 +82,7 @@ function ticketEmbedBuilder(props) {
 	)
     .setThumbnail(url)
 	.setTimestamp()
-	.setFooter({ text: `${season} • ${subject} • ${language}`});
+	.setFooter({ text: `${language}`});
 
     let buttons = new ActionRowBuilder()
         .addComponents(
